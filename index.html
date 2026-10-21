@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ResumeCraft | Online Resume Builder</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#">ResumeCraft</a>
+    <button id="downloadBtn" class="primary-btn">Download PDF</button>
+  </header>
+
+  <main class="workspace">
+    <section class="editor">
+      <h1>Build your resume</h1>
+      <p class="muted">Enter your details. Your resume updates automatically.</p>
+
+      <form id="resumeForm">
+        <h2>Personal details</h2>
+        <label>Full name
+          <input id="name" value="Ravi Teja" placeholder="Your full name">
+        </label>
+        <label>Professional title
+          <input id="role" value="Aspiring DevOps Engineer"
+            placeholder="e.g. Software Developer">
+        </label>
+        <label>Email
+          <input id="email" type="email" value="your.email@example.com">
+        </label>
+        <label>Phone
+          <input id="phone" type="tel" placeholder="+91 XXXXX XXXXX">
+        </label>
+        <label>Location
+          <input id="location" placeholder="City, India">
+        </label>
+        <label>Professional summary
+          <textarea id="summary" rows="4">Entry-level technology professional interested in DevOps, automation, Linux, Docker and CI/CD. Eager to build reliable applications and learn industry practices.</textarea>
+        </label>
+
+        <h2>Skills</h2>
+        <label>Technical skills
+          <textarea id="skills" rows="3">Linux, Git, GitHub, Docker, Jenkins, HTML, CSS, JavaScript</textarea>
+        </label>
+
+        <h2>Education</h2>
+        <label>Degree and institution
+          <input id="education" placeholder="Degree, college name">
+        </label>
+        <label>Graduation year
+          <input id="graduation" placeholder="e.g. 2026">
+        </label>
+
+        <h2>Projects</h2>
+        <label>Project name
+          <input id="project" value="Online Resume Builder">
+        </label>
+        <label>Project description
+          <textarea id="projectDescription" rows="4">Built a responsive resume builder with live preview and PDF printing. Planned Docker containerization and Jenkins CI/CD automation.</textarea>
+        </label>
+      </form>
+    </section>
+
+    <section class="preview-area">
+      <div class="preview-label">LIVE PREVIEW</div>
+
+      <article id="resume" class="resume">
+        <header class="resume-header">
+          <h1 id="outName"></h1>
+          <p id="outRole" class="out-role"></p>
+          <p id="outContact" class="contact"></p>
+        </header>
+
+        <section class="resume-section">
+          <h2>PROFILE</h2>
+          <p id="outSummary"></p>
+        </section>
+
+        <section class="resume-section">
+          <h2>TECHNICAL SKILLS</h2>
+          <p id="outSkills"></p>
+        </section>
+
+        <section class="resume-section">
+          <h2>EDUCATION</h2>
+          <h3 id="outEducation"></h3>
+          <p id="outGraduation"></p>
+        </section>
+
+        <section class="resume-section">
+          <h2>PROJECTS</h2>
+          <h3 id="outProject"></h3>
+          <p id="outProjectDescription"></p>
+        </section>
+      </article>
+    </section>
+  </main>
+
+  <footer>ResumeCraft · Personal resume builder project</footer>
+</body>
+</html>

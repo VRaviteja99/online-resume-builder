@@ -1,0 +1,218 @@
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --navy: #17345b;
+  --blue: #2563eb;
+  --background: #eef2f7;
+  --muted: #64748b;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #1e293b;
+  background: var(--background);
+  line-height: 1.5;
+}
+
+.topbar {
+  padding: 16px 5%;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 10px #0000000a;
+}
+
+.brand {
+  color: var(--navy);
+  font-size: 23px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.primary-btn {
+  border: 0;
+  border-radius: 7px;
+  padding: 12px 18px;
+  background: var(--blue);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.workspace {
+  width: min(1450px, 96%);
+  margin: 28px auto;
+  display: grid;
+  grid-template-columns: minmax(300px, 0.8fr) minmax(350px, 1.2fr);
+  gap: 26px;
+  align-items: start;
+}
+
+.editor, .preview-area {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 20px #00000008;
+}
+
+.editor h1 {
+  margin-top: 0;
+}
+
+.editor h2 {
+  font-size: 18px;
+  color: var(--navy);
+  margin-top: 26px;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 8px;
+}
+
+.muted, .preview-label {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+label {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  margin-top: 15px;
+}
+
+input, textarea {
+  display: block;
+  width: 100%;
+  margin-top: 6px;
+  padding: 11px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font: inherit;
+  font-weight: normal;
+}
+
+input:focus, textarea:focus {
+  outline: 2px solid #93c5fd;
+  border-color: var(--blue);
+}
+
+textarea {
+  resize: vertical;
+}
+
+.preview-label {
+  margin-bottom: 12px;
+  letter-spacing: 1.5px;
+  font-weight: bold;
+}
+
+.resume {
+  background: white;
+  padding: 38px;
+  min-height: 800px;
+  box-shadow: 0 4px 18px #00000012;
+  overflow-wrap: anywhere;
+}
+
+.resume-header {
+  border-bottom: 3px solid var(--navy);
+  padding-bottom: 18px;
+}
+
+.resume-header h1 {
+  color: var(--navy);
+  font-size: 30px;
+  margin: 0;
+}
+
+.out-role {
+  color: var(--blue);
+  font-weight: bold;
+  margin: 5px 0;
+}
+
+.contact {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.resume-section {
+  margin-top: 24px;
+}
+
+.resume-section h2 {
+  color: var(--navy);
+  font-size: 13px;
+  letter-spacing: 1px;
+  border-bottom: 1px solid #cbd5e1;
+  padding-bottom: 7px;
+}
+
+.resume-section h3 {
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+
+.resume-section p {
+  font-size: 13px;
+  white-space: pre-line;
+}
+
+footer {
+  padding: 20px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+@media (max-width: 900px) {
+  .workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .resume {
+    padding: 25px;
+  }
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 12mm;
+  }
+
+  body {
+    background: white;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .topbar, .editor, .preview-label, footer {
+    display: none !important;
+  }
+
+  .workspace {
+    display: block;
+    width: 100%;
+    margin: 0;
+  }
+
+  .preview-area {
+    padding: 0;
+    box-shadow: none;
+  }
+
+  .resume {
+    min-height: 0;
+    padding: 0;
+    box-shadow: none;
+  }
+
+  .resume-section {
+    break-inside: avoid;
+  }
+}
