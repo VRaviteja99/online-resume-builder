@@ -19,11 +19,10 @@ pipeline {
         }
 
         stage('Build Docker image') {
-            steps {
-                bat '"C:\\Users\\Ravi Teja\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe" build -t resume-builder:latest .'
-            }
-        }
-
+    steps {
+        bat '"C:\\Users\\Ravi Teja\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe" build -t resume-builder:latest .'
+    }
+}
         stage('Deploy application') {
             steps {
                 bat '''
