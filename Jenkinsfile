@@ -20,19 +20,22 @@ pipeline {
 
         stage('Build Docker image') {
             steps {
-                bat 'docker build -t resume-builder:latest .'
+                bat '"C:\\Users\\Ravi Teja\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe" build -t resume-builder:latest .'
             }
         }
 
         stage('Deploy application') {
             steps {
-                bat 'docker rm -f resume-builder 2>NUL'
-                bat 'docker run -d --restart unless-stopped --name resume-builder -p 8081:80 resume-builder:latest'
+                bat '''
+                    "C:\\Users\\Ravi Teja\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe" rm -f resume-builder 2>NUL
+                    "C:\\Users\\Ravi Teja\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe" run -d --restart unless-stopped --name resume-builder -p 8081:80 resume-builder:latest
+                '''
             }
         }
 
         stage('Verify deployment') {
             steps {
+                bat '"C:\\Users\\Ravi Teja\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe" ps --filter "name=resume-builder"'
                 bat 'curl.exe -f http://localhost:8081/'
             }
         }
@@ -40,10 +43,10 @@ pipeline {
 
     post {
         success {
-            echo 'Resume Builder deployed successfully!'
+            echo 'SUCCESS: Resume Builder deployed at http://localhost:8081'
         }
         failure {
-            echo 'Deployment failed. Check Console Output.'
+            echo 'FAILED: Check Console Output for the error.'
         }
     }
 }
