@@ -4,70 +4,149 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>ResumeCraft | Online Resume Builder</title>
+
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
+
 <body>
   <header class="topbar">
     <a class="brand" href="#">ResumeCraft</a>
-    <button id="downloadBtn" class="primary-btn">Download PDF</button>
+    <button id="downloadBtn" class="primary-btn" type="button">
+      Download PDF
+    </button>
   </header>
 
   <main class="workspace">
+
+    <!-- Resume editor -->
     <section class="editor">
-      <h1>Build your resume</h1>
-      <p class="muted">Enter your details. Your resume updates automatically.</p>
+      <h1>Build Your Resume</h1>
+      <p class="muted">
+        Enter your details and see your resume update automatically.
+      </p>
+
+      <!-- NEW: Choose a resume template -->
+      <div class="template-picker">
+        <label for="templateSelect">Choose Resume Template</label>
+        <select id="templateSelect">
+          <option value="modern">Modern Professional</option>
+          <option value="classic">Classic ATS-Friendly</option>
+          <option value="minimal">Minimal Elegant</option>
+        </select>
+      </div>
 
       <form id="resumeForm">
-        <h2>Personal details</h2>
-        <label>Full name
-          <input id="name" value="" placeholder="Your full name">
-        </label>
-        <label>Professional title
-          <input id="role" value=""
-            placeholder="e.g. Software Developer">
-        </label>
-        <label>Email
-          <input id="email" type="email" value="your.email@example.com">
-        </label>
-        <label>Phone
-          <input id="phone" type="tel" placeholder="+91 XXXXX XXXXX">
-        </label>
-        <label>Location
-          <input id="location" placeholder="City, India">
-        </label>
-        <label>Professional summary
-          <textarea id="summary" rows="4"></textarea>
+
+        <h2>Personal Details</h2>
+
+        <label for="name">Full Name
+          <input
+            id="name"
+            type="text"
+            placeholder="Your full name"
+          >
         </label>
 
-        <h2>Skills</h2>
-        <label>Technical skills
-          <textarea id="skills" rows="3"></textarea>
+        <label for="role">Professional Title
+          <input
+            id="role"
+            type="text"
+            placeholder="e.g. Software Developer"
+          >
+        </label>
+
+        <label for="email">Email
+          <input
+            id="email"
+            type="email"
+            value=""
+            placeholder="your.email@example.com"
+          >
+        </label>
+
+        <label for="phone">Phone
+          <input
+            id="phone"
+            type="tel"
+            placeholder="+91 XXXXX XXXXX"
+          >
+        </label>
+
+        <label for="location">Location
+          <input
+            id="location"
+            type="text"
+            placeholder="City, India"
+          >
+        </label>
+
+        <label for="summary">Professional Summary
+          <textarea
+            id="summary"
+            rows="4"
+            placeholder="Write a short professional summary..."
+          ></textarea>
+        </label>
+
+        <h2>Technical Skills</h2>
+
+        <label for="skills">Skills
+          <textarea
+            id="skills"
+            rows="3"
+            placeholder="AWS, Linux, Docker, Git, Jenkins..."
+          ></textarea>
         </label>
 
         <h2>Education</h2>
-        <label>Degree and institution
-          <input id="education" placeholder="Degree, college name">
+
+        <label for="education">Degree and Institution
+          <input
+            id="education"
+            type="text"
+            placeholder="Degree, college name"
+          >
         </label>
-        <label>Graduation year
-          <input id="graduation" placeholder="e.g. 2026">
+
+        <label for="graduation">Graduation Year
+          <input
+            id="graduation"
+            type="text"
+            placeholder="e.g. 2026"
+          >
         </label>
 
         <h2>Projects</h2>
-        <label>Project name
-          <input id="project" value="" placeholder="Enter project name">
+
+        <label for="project">Project Name
+          <input
+            id="project"
+            type="text"
+            placeholder="Enter project name"
+          >
         </label>
-        <label>Project description
-          <textarea id="projectDescription" rows="4"></textarea>
+
+        <label for="projectDescription">Project Description
+          <textarea
+            id="projectDescription"
+            rows="4"
+            placeholder="Describe your project, tools, and achievements..."
+          ></textarea>
         </label>
+
       </form>
     </section>
 
+    <!-- Live resume preview -->
     <section class="preview-area">
-      <div class="preview-label">LIVE PREVIEW</div>
+
+      <div class="preview-label">LIVE RESUME PREVIEW</div>
 
       <article id="resume" class="resume">
+
         <header class="resume-header">
           <h1 id="outName"></h1>
           <p id="outRole" class="out-role"></p>
@@ -95,10 +174,15 @@
           <h3 id="outProject"></h3>
           <p id="outProjectDescription"></p>
         </section>
+
       </article>
     </section>
+
   </main>
 
-  <footer>ResumeCraft · Personal resume builder project</footer>
+  <footer>
+    ResumeCraft · Online Resume Builder
+  </footer>
+
 </body>
 </html>
