@@ -24,7 +24,7 @@ const outputMap = {
   projectDescription: "outProjectDescription"
 };
 
-// Update the resume preview using the form values.
+// Update the resume preview.
 function updateResume() {
   for (const field of fields) {
     const input = document.getElementById(field);
@@ -39,6 +39,7 @@ function updateResume() {
     }
   }
 
+  // Update contact information.
   const contact = [
     document.getElementById("email").value.trim(),
     document.getElementById("phone").value.trim(),
@@ -47,11 +48,58 @@ function updateResume() {
 
   document.getElementById("outContact").textContent =
     contact.join(" | ");
+
+  // Hide sections when their fields are empty.
+  const sectionVisibility = [
+    {
+      output: "outSummary",
+      section: "PROFILE"
+    },
+    {
+      output: "outSkills",
+      section: "TECHNICAL SKILLS"
+    },
+    {
+      output: "outEducation",
+      section: "EDUCATION"
+    },
+    {
+      output: "outProject",
+      section: "PROJECTS"
+    }
+  ];
+
+  sectionVisibility.forEach(item => {
+    const output = document.getElementById(item.output);
+    const section = output.closest(".resume-section");
+
+    let hasContent = output.textContent.trim() !== "";
+
+    // Show Education if either education or graduation is entered.
+    if (item.output === "outEducation") {
+      hasContent =
+        output.textContent.trim() !== "" ||
+        document.getElementById("outGraduation")
+          .textContent.trim() !== "";
+    }
+
+    // Show Projects if either project field is entered.
+    if (item.output === "outProject") {
+      hasContent =
+        output.textContent.trim() !== "" ||
+        document.getElementById("outProjectDescription")
+          .textContent.trim() !== "";
+    }
+
+    section.hidden = !hasContent;
+  });
 }
 
 // Switch between the three resume templates.
 function changeTemplate() {
-  const templateSelect = document.getElementById("templateSelect");
+  const templateSelect =
+    document.getElementById("templateSelect");
+
   const resume = document.getElementById("resume");
 
   if (!templateSelect || !resume) {
@@ -64,27 +112,39 @@ function changeTemplate() {
     "template-minimal"
   );
 
-  resume.classList.add(`template-${templateSelect.value}`);
+  const selectedTemplate = templateSelect.value;
+
+  const validTemplates = [
+    "modern",
+    "classic",
+    "minimal"
+  ];
+
+  const template = validTemplates.includes(selectedTemplate)
+    ? selectedTemplate
+    : "modern";
+
+  resume.classList.add(`template-${template}`);
 }
 
-// Update the preview whenever the user types.
+// Update preview whenever the user types.
 document.getElementById("resumeForm").addEventListener(
   "input",
   updateResume
 );
 
-// Apply the selected template whenever the dropdown changes.
+// Apply the selected template.
 document.getElementById("templateSelect").addEventListener(
   "change",
   changeTemplate
 );
 
-// Open the browser print window to save the resume as a PDF.
+// Download the resume using the browser's Print / Save as PDF.
 document.getElementById("downloadBtn").addEventListener(
   "click",
   () => window.print()
 );
 
-// Initialize the page with an empty preview and the modern template.
+// Initialize the page.
 changeTemplate();
 updateResume();
